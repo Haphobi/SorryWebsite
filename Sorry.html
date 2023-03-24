@@ -13,34 +13,97 @@
 				margin:0;
 				font-size: 16pt;
 			}
-			div{
+			#sorryDiv{
 				width: auto;
 				height: 100%;
 				margin: auto;
 				display: block;
 				position:relative;
 				margin:none;
-				border-radius: 1em;
 				width:80vmin;
 				background-color: cyan;
+				border-radius: 1vmin;
+				border-top-right-radius: 0;
+				border-top-left-radius: 0;
 
 			}
-			h1 {
+			#inputDiv{
+				width: auto;
+				height: 100%;
+				margin: auto;
+				position:relative;
+				margin:none;
+				border-radius: 1vmin;
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+				width:80vmin;
+				background-color: cyan;
+				font-size: 0;
+				display: flex; 
+				justify-content: center;
+				padding-top: 2vmin;
+				padding-bottom: 2vmin;
+			}
+			.input{
+				font-family: Comic Sans MS;
+				background-color: #008b8b;
+				color:white;
+				font-weight: bold;
+				height:30px;
+				border:2px solid black;
+			}
+			::placeholder {
+				color: lightcyan;
+				opacity: 1; /* Firefox */
+				font-weight: normal;
+			}
+			#sorryH1 {
 				margin:auto;
 				width:70vmin;
 				text-align:justify;
-				align-content: center;
-				
+				align-content: center;	
+			}
+			#submitButton{
+				background-color: rgb(0, 100, 100);
+				transition: 0.2s;
+			 }
+			#submitButton:hover {
+				background-color: rgb(0, 146, 146);
+        transition: 0.2s;
+			}
+			#submitButton:active {
+				background-color: rgb(40, 184, 184);
+        transition: 0.2s;
 			}
 		</style>
 	</head>
 	<body>
-		<div><h1 id="sorry"></h1></div>
+		<!-- next time add a way to change n, parent div with formatting, watermark-->
+		<div id="inputDiv">
+			<div style="display: flex; align-items: center;">
+				<input type="text" id="input" placeholder="change the text" class="input" style="border-top-left-radius: 1vmin; border-bottom-left-radius:1vmin;">
+				<input type="button" onclick="submit()" value="submit" class="input" id="submitButton" style="border-top-right-radius: 1vmin; border-bottom-right-radius:1vmin;border-left:0;height:36px;">
+			</div>
+		</div>
+		<div id="sorryDiv"><h1 id="sorryH1"></h1></div>
 		<script type="text/javascript">
-			var n = 2003;
-			while(n>=0) {
-				document.getElementById("sorry").innerHTML = document.getElementById("sorry").innerHTML + "i'm sorry ";
-				n--;
+			var defaultText = "i'm sorry";
+			renderText(defaultText);
+
+			function submit() {
+				var inputData = document.getElementById("input").value;
+				console.log(inputData);
+				renderText(inputData);
+			}
+
+			function renderText(text) {
+				console.log(text);
+				n = 2003;
+				document.getElementById("sorryH1").innerHTML = "";
+				while(n>=0) {
+					document.getElementById("sorryH1").innerHTML = document.getElementById("sorryH1").innerHTML + text + " ";
+					n--;
+				}
 			}
 		</script>
 	</body>
