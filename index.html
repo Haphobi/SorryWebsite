@@ -30,11 +30,11 @@
 			#inputDiv{
 				width: inherit;
 				height: auto;
+				margin:inherit;
 				margin-left: 5vmin;
 				margin-right:5vmin;
 				position:relative;
-				margin:inherit;
-				width: max(80vmin,500px);
+				width: max(70vmin,500px);
 				font-size: 0;
 				display: flex; 
 				justify-content: center;
@@ -47,8 +47,8 @@
 				color:white;
 				font-weight: bold;
 				font-size: 2vmin;
-				height: 8vmin;
-				width: 8vmin;
+				height: 6vmin;
+				width: 6vmin;
 				border:0.5vmin solid black;
 				word-wrap: break-word;
 				padding:0.5vmin;
@@ -60,9 +60,18 @@
 				border-top-left-radius: 1vmin;
 				border-bottom-left-radius:1vmin;
 				resize: none;
-				display: inline-block;
-				vertical-align: middle;
+			}
+			.input#input:focus::placeholder {
+				color:transparent;
+			}
+			.input#input::placeholder {
+				color: lightcyan;
+				opacity: 1; /* Firefox */
+				font-weight: normal;
+				font-size: 2vmin;
 				text-align: center;
+				vertical-align: middle;
+				line-height: 6vmin;
 			}
 			
 			.input#submitButton{
@@ -77,12 +86,6 @@
 				transition: 0.2s;
 			}
 			
-			textarea.input::placeholder {
-				color: lightcyan;
-				opacity: 1; /* Firefox */
-				font-weight: normal;
-				font-size: 3vmin;
-			}
 			
 			button.input {
 				background:rgb(0, 100, 100);
@@ -106,9 +109,19 @@
 				background-color: rgb(40, 184, 184);
 			}
 
+			#headerTableCell1 {
+				width:58vmin;
+			}
+			#headerTableCell2 {
+				width:6vmin
+			}
+			#headerTableCell3 {
+				width:6vmin
+			}
+
 			.button-image {
-				height:6vmin;
-				width:6vmin;
+				height:5vmin;
+				width:5vmin;
 				display: block;
 				margin: 0 auto;
 				max-width: 100%;
@@ -133,25 +146,33 @@
 		<!-- next time add a way to change n, parent div with formatting, watermark-->
 		<div id="backgroundDiv">
 			<div id="inputDiv">
-				<div style="display: flex; align-items: center;">
-					<textarea id="input" placeholder="change the text" class="input" wrap="soft"></textarea>
-					<input type="button" onclick="submit()" value="submit" class="input" id="submitButton" style="border-top-right-radius: 1vmin; border-bottom-right-radius:1vmin;border-left:0;">
-				</div>
-				<button class="input" id="settingsButton"><img src="settings_gear.png" style="filter:invert();" class="button-image"></button>
-				<button class="input" id="aboutButton"><img src="question_mark.png" style="filter:invert();" class="button-image"></button>
+				<table>
+					<tr><td id="headerTableCell1">
+							<div style="display: flex; align-items: center;">
+								<textarea id="input" placeholder="change the text" class="input" wrap="soft"></textarea>
+								<input type="button" onclick="submit()" value="submit" class="input" id="submitButton" style="border-top-right-radius: 1vmin; border-bottom-right-radius:1vmin;border-left:0;">
+							</div>
+						</td><td id="headerTableCell2">
+							<button class="input" id="settingsButton" style="margin-right:0.25vmin;"><img src="settings_gear.png" style="filter:invert();" class="button-image"></button>
+						</td><td id="headerTableCell3">
+							<button class="input" id="aboutButton" style="margin-left:0.25vmin;margin-right:0;"><img src="question_mark.png" style="filter:invert();" class="button-image"></button>
+					</td></tr>
+				</table>
 			</div>
 			<h1 id="sorryH1"></h1>
 		</div>
 		<script type="text/javascript">
 			var defaultText = "i'm sorry";
+			const textarea = document.getElementById("input");
+			
 			renderText(defaultText);
-
+			
 			function submit() {
 				var inputData = document.getElementById("input").value;
 				renderText(inputData);
 				document.getElementById("input").value = "";
 			}
-
+			
 			function renderText(text) {
 				n = 2003;
 				document.getElementById("sorryH1").innerHTML = "";
@@ -160,6 +181,14 @@
 					n--;
 				}
 			}
+
+			textarea.addEventListener("keydown", function(event) {
+			if (event.key === "Enter") {
+				event.preventDefault();
+				submit();
+			}
+			});
+			
 		</script>
 	</body>
 </html>
