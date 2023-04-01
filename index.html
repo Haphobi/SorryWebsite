@@ -28,23 +28,24 @@
 			}
 			#inputDiv{
 				width: inherit;
-				height: 100%;
+				height: auto;
 				margin-left: 5vmin;
 				margin-right:5vmin;
 				position:relative;
 				margin:inherit;
-				width:70vmin;
+				width: max(80vmin,500px);
 				font-size: 0;
 				display: flex; 
 				justify-content: center;
-				padding-top: 2vmin;
-				padding-bottom: 2vmin;
+				padding-top: 1vmin;
+	
 			}
 			.input{
 				font-family: Comic Sans MS;
 				background-color: #008b8b;
 				color:white;
 				font-weight: bold;
+				font-size: 2vmin;
 				height: 8vmin;
 				width: 8vmin;
 				border:0.5vmin solid black;
@@ -52,7 +53,6 @@
 				padding:0.5vmin;
 				box-sizing: content-box;
 				transition: 0.2s;
-				font-size: 3rem;
 			}
 			.input#input {
 				width: 30vmin;
@@ -76,28 +76,47 @@
 				transition: 0.2s;
 			}
 			
+			textarea.input::placeholder {
+				color: lightcyan;
+				opacity: 1; /* Firefox */
+				font-weight: normal;
+				font-size: 3vmin;
+			}
+			
 			button.input {
 				background:rgb(0, 100, 100);
-				border-radius: 100%;
-				margin: 1em;
+				border-radius: 50%;
+				margin: 1vmin;
 				padding:0;
 				align-content: center;
+				position: relative;
+ 				display: inline-block;
+				padding: 1vmin;
+				border-radius: 50%;
+				font-size: 0;
+
 			}
 			button.input:hover {
 				cursor:pointer;
+				background-color: rgb(0, 146, 146);
 			}
-
+			button.input:active {
+				cursor:pointer;
+				background-color: rgb(40, 184, 184);
+			}
 
 			.button-image {
 				height:6vmin;
 				width:6vmin;
-				border-radius: 100%;
-			}
-			
-			::placeholder {
-				color: lightcyan;
-				opacity: 1; /* Firefox */
-				font-weight: normal;
+				display: block;
+				margin: 0 auto;
+				max-width: 100%;
+				max-height: 100%;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				user-select: none;
 			}
 			
 			#sorryH1 {
@@ -114,7 +133,7 @@
 		<div id="backgroundDiv">
 			<div id="inputDiv">
 				<div style="display: flex; align-items: center;">
-					<textarea type="text" id="input" placeholder="change the text" class="input" wrap="soft"></textarea>
+					<textarea id="input" placeholder="change the text" class="input" wrap="soft"></textarea>
 					<input type="button" onclick="submit()" value="submit" class="input" id="submitButton" style="border-top-right-radius: 1vmin; border-bottom-right-radius:1vmin;border-left:0;">
 				</div>
 				<button class="input" id="settingsButton"><img src="settings_gear.png" style="filter:invert();" class="button-image"></button>
