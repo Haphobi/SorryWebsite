@@ -13,6 +13,7 @@
 				font-family: Verdana, Geneva, Tahoma, sans-serif;
 				margin:0;
 				font-size: 16pt;
+				overflow-y: scroll;
 			}
 			#backgroundDiv{
 				width: max(80vmin,500px);
@@ -23,7 +24,7 @@
 				margin:none;
 				margin-bottom: 1vh;
 				margin-top: 1vh;
-				background-color: cyan;
+				background-color: #00ffff;
 				border-radius: 1vmin;
 
 			}
@@ -140,6 +141,40 @@
 				align-content: center;	
 				transition: 0.2s;
 			}
+
+			.settings {
+				display:none;
+				margin:auto;
+				width:70vmin;
+				text-align:justify;
+				align-content: center;	
+				transition: 0.2s;
+				padding-bottom: 2vmin;
+			}
+			.numInput {
+
+			}
+
+			/* width */
+			::-webkit-scrollbar {
+			width: 1.5vmin;
+			}
+
+			/* Track */
+			::-webkit-scrollbar-track {
+			background: none; 
+			}
+			
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+			background: #f1f1f1; 
+			border-radius: 50vmin;
+			}
+
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+			background: #555; 
+			}
 		</style>
 	</head>
 	<body>
@@ -153,25 +188,49 @@
 								<input type="button" onclick="submit()" value="submit" class="input" id="submitButton" style="border-top-right-radius: 1vmin; border-bottom-right-radius:1vmin;border-left:0;">
 							</div>
 						</td><td id="headerTableCell2">
-							<button class="input" id="settingsButton" style="margin-right:0.25vmin;"><img src="settings_gear.png" style="filter:invert();" class="button-image"></button>
+							<button class="input" id="settingsButton" onclick="settingsOpen()" style="margin-right:0.25vmin;"><img src="settings_gear.png" style="filter:invert();" class="button-image"></button>
 						</td><td id="headerTableCell3">
 							<button class="input" id="aboutButton" style="margin-left:0.25vmin;margin-right:0;"><img src="question_mark.png" style="filter:invert();" class="button-image"></button>
 					</td></tr>
 				</table>
 			</div>
 			<h1 id="sorryH1"></h1>
+
+			<div class="settings">
+				<h1>Customisation</h1>
+				<label>String count (how many words): <input type="number" class="numInput" inputmode="numeric" pattern="[0-9]" min="1" max="500"><button>Apply</button></label><br/>
+				<label>Theme Color: <input type="color" value="#00ffff"><button>Apply</button></label><br/>
+				<label>Text Color:<input type="color" value="#ffffff"><button>Apply</button></label>
+				<h2>Background</h2>
+				<label>Background type:</label><br/>
+					<label>Color<input type="radio" name="backgroundType"></label><br/>
+					<label>Image<input type="radio" name="backgroundType"></label>
+			</div>
 		</div>
+
 		<script type="text/javascript">
 			var defaultText = "i'm sorry";
 			const textarea = document.getElementById("input");
 			
-			renderText(defaultText);
+			
+			function settingsOpen() {
+				document.querySelector("#settingsButton").setAttribute('onclick','settingsClose()')
+				document.querySelector("#sorryH1").style = "display:none;"
+				document.querySelector(".settings").style = "display:block;"
+			}
+			
+			function settingsClose() {
+				document.querySelector("#settingsButton").setAttribute('onclick','settingsOpen()')
+				document.getElementById("sorryH1").style = "display:block;"
+				document.querySelector(".settings").style = "display:none;"
+			}
 			
 			function submit() {
 				var inputData = document.getElementById("input").value;
 				renderText(inputData);
 				document.getElementById("input").value = "";
 			}
+			renderText(defaultText);
 			
 			function renderText(text) {
 				n = 2003;
