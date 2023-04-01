@@ -20,6 +20,8 @@
 				display: block;
 				position:relative;
 				margin:none;
+				margin-bottom: 1vh;
+				margin-top: 1vh;
 				background-color: cyan;
 				border-radius: 1vmin;
 
@@ -27,10 +29,11 @@
 			#inputDiv{
 				width: inherit;
 				height: 100%;
-				margin: auto;
+				margin-left: 5vmin;
+				margin-right:5vmin;
 				position:relative;
-				margin:none;
-				width:80vmin;
+				margin:inherit;
+				width:70vmin;
 				font-size: 0;
 				display: flex; 
 				justify-content: center;
@@ -42,41 +45,67 @@
 				background-color: #008b8b;
 				color:white;
 				font-weight: bold;
-				height:30px;
-				border:2px solid black;
+				height: 8vmin;
+				width: 8vmin;
+				border:0.5vmin solid black;
+				word-wrap: break-word;
+				padding:0.5vmin;
+				box-sizing: content-box;
+				transition: 0.2s;
+				font-size: 3rem;
 			}
+			.input#input {
+				width: 30vmin;
+				border-top-left-radius: 1vmin;
+				border-bottom-left-radius:1vmin;
+				resize: none;
+				display: inline-block;
+				vertical-align: middle;
+				text-align: center;
+			}
+			
+			.input#submitButton{
+				background-color: rgb(0, 100, 100);
+			}
+			.input#submitButton:hover {
+				background-color: rgb(0, 146, 146);
+				transition: 0.2s;
+			}
+			.input#submitButton:active {
+				background-color: rgb(40, 184, 184);
+				transition: 0.2s;
+			}
+			
+			button.input {
+				background:rgb(0, 100, 100);
+				border-radius: 100%;
+				margin: 1em;
+				padding:0;
+				align-content: center;
+			}
+			button.input:hover {
+				cursor:pointer;
+			}
+
+
+			.button-image {
+				height:6vmin;
+				width:6vmin;
+				border-radius: 100%;
+			}
+			
 			::placeholder {
 				color: lightcyan;
 				opacity: 1; /* Firefox */
 				font-weight: normal;
 			}
+			
 			#sorryH1 {
 				margin:auto;
 				width:70vmin;
 				text-align:justify;
 				align-content: center;	
-			}
-			#submitButton{
-				background-color: rgb(0, 100, 100);
 				transition: 0.2s;
-			 }
-			#submitButton:hover {
-				background-color: rgb(0, 146, 146);
-        transition: 0.2s;
-			}
-			#submitButton:active {
-				background-color: rgb(40, 184, 184);
-        transition: 0.2s;
-			}
-
-			.button-image {
-				height: min(800px,80px);
-				width: min(800px,80px);
-				border:black 5px solid;
-				background:rgb(0, 100, 100);
-				border-radius: 100%;
-				margin: 1em;
-				padding:0;
 			}
 		</style>
 	</head>
@@ -85,27 +114,25 @@
 		<div id="backgroundDiv">
 			<div id="inputDiv">
 				<div style="display: flex; align-items: center;">
-					<input type="text" id="input" placeholder="change the text" class="input" style="border-top-left-radius: 1vmin; border-bottom-left-radius:1vmin;">
-					<input type="button" onclick="submit()" value="submit" class="input" id="submitButton" style="border-top-right-radius: 1vmin; border-bottom-right-radius:1vmin;border-left:0;height:35px;">
+					<textarea type="text" id="input" placeholder="change the text" class="input" wrap="soft"></textarea>
+					<input type="button" onclick="submit()" value="submit" class="input" id="submitButton" style="border-top-right-radius: 1vmin; border-bottom-right-radius:1vmin;border-left:0;">
 				</div>
-				<!-- Settings button-->
-				<button class="button-image"><img src="settings_gear.png" height="50px" width="50px" style="filter:invert()"></button>
-				<button class="button-image"><img src="question_mark.png" height="50px" width="50px" style="filter:invert()"></button>
+				<button class="input" id="settingsButton"><img src="settings_gear.png" style="filter:invert();" class="button-image"></button>
+				<button class="input" id="aboutButton"><img src="question_mark.png" style="filter:invert();" class="button-image"></button>
 			</div>
 			<h1 id="sorryH1"></h1>
 		</div>
 		<script type="text/javascript">
-			var defaultText = "i'm sorry";
+			var defaultText = "Bread";
 			renderText(defaultText);
 
 			function submit() {
 				var inputData = document.getElementById("input").value;
-				console.log(inputData);
 				renderText(inputData);
+				document.getElementById("input").value = "";
 			}
 
 			function renderText(text) {
-				console.log(text);
 				n = 2003;
 				document.getElementById("sorryH1").innerHTML = "";
 				while(n>=0) {
