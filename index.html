@@ -14,19 +14,18 @@
 				font-size: 16pt;
 			}
 			#backgroundDiv{
-				width: auto;
+				width: max(80vmin,500px);
 				height: 100%;
 				margin: auto;
 				display: block;
 				position:relative;
 				margin:none;
-				width:80vmin;
 				background-color: cyan;
 				border-radius: 1vmin;
 
 			}
 			#inputDiv{
-				width: auto;
+				width: inherit;
 				height: 100%;
 				margin: auto;
 				position:relative;
@@ -69,6 +68,16 @@
 				background-color: rgb(40, 184, 184);
         transition: 0.2s;
 			}
+
+			.button-image {
+				height: min(800px,80px);
+				width: min(800px,80px);
+				border:black 5px solid;
+				background:rgb(0, 100, 100);
+				border-radius: 100%;
+				margin: 1em;
+				padding:0;
+			}
 		</style>
 	</head>
 	<body>
@@ -79,6 +88,9 @@
 					<input type="text" id="input" placeholder="change the text" class="input" style="border-top-left-radius: 1vmin; border-bottom-left-radius:1vmin;">
 					<input type="button" onclick="submit()" value="submit" class="input" id="submitButton" style="border-top-right-radius: 1vmin; border-bottom-right-radius:1vmin;border-left:0;height:35px;">
 				</div>
+				<!-- Settings button-->
+				<button class="button-image"><img src="settings_gear.png" height="50px" width="50px" style="filter:invert()"></button>
+				<button class="button-image"><img src="question_mark.png" height="50px" width="50px" style="filter:invert()"></button>
 			</div>
 			<h1 id="sorryH1"></h1>
 		</div>
