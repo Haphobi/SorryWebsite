@@ -4,6 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>i'm sorry</title>
+		<link rel="icon" type="image/x-icon" href="https://cdn.discordapp.com/avatars/613591009531789319/55e48b40fa5d3c15a5ca79dc06537040?size=1024">
 		<style type="text/css">
 			body {
 				background-color: black;
@@ -57,10 +58,11 @@
 				transition: 0.2s;
 			}
 			.input#input {
-				width: 30vmin;
-				border-top-left-radius: 1vmin;
-				border-bottom-left-radius:1vmin;
+				width: 25vmin;
+				border-top-left-radius: 50vmin;
+				border-bottom-left-radius:50vmin;
 				resize: none;
+				padding-left: 1em
 			}
 			.input#input:focus::placeholder {
 				color:transparent;
@@ -90,7 +92,7 @@
 			
 			button.input {
 				background:rgb(0, 100, 100);
-				border-radius: 50%;
+				border-radius: 50vmin;
 				margin: 1vmin;
 				padding:0;
 				align-content: center;
@@ -139,7 +141,6 @@
 				width:70vmin;
 				text-align:justify;
 				align-content: center;	
-				transition: 0.2s;
 			}
 
 			.settings {
@@ -172,17 +173,21 @@
 			::-webkit-scrollbar-thumb:hover {
 			background: #555; 
 			}
+
+			.inSettings {
+				display:inline-block;
+			}
 		</style>
 	</head>
 	<body>
-		<!-- next time add a way to change n, parent div with formatting, watermark-->
-		<div id="backgroundDiv">
+		<!-- !! add watermark-->
+		<div id="backgroundDiv">	
 			<div id="inputDiv">
 				<table>
 					<tr><td id="headerTableCell1">
 							<div style="display: flex; align-items: center;">
 								<textarea id="input" placeholder="change the text" class="input" wrap="soft"></textarea>
-								<input type="button" onclick="submit()" value="submit" class="input" id="submitButton" style="border-top-right-radius: 1vmin; border-bottom-right-radius:1vmin;border-left:0;">
+								<input type="button" onclick="submit()" value="submit" class="input" id="submitButton" style="border-top-right-radius: 50vmin; border-bottom-right-radius:50vmin;border-left:0;">
 							</div>
 						</td><td id="headerTableCell2">
 							<button class="input" id="settingsButton" onclick="settingsOpen()" style="margin-right:0.25vmin;"><img src="settings_gear.png" style="filter:invert();" class="button-image"></button>
@@ -195,18 +200,22 @@
 
 			<div class="settings">
 				<h1>Customisation</h1>
-				<label>String count (how many words): <input type="number" class="numInput" inputmode="numeric" pattern="[0-9]" min="1" max="500"><button>Apply</button></label><br/>
-				<label>Theme Color: <input type="color" value="#00ffff"><button>Apply</button></label><br/>
-				<label>Text Color:<input type="color" value="#ffffff"><button>Apply</button></label>
+				<label>String count (how many words): <input class="inSettings" type="number" inputmode="numeric" pattern="[0-9]" min="1" max="500"><button class="inSettings">Apply</button></label><br/>
+				<label>Theme Color: <input class="inSettings" type="color" value="#00ffff"><button class="inSettings">Apply</button></label><br/>
+				<label>Text Color:<input class="inSettings" type="color" value="#ffffff"><button class="inSettings">Apply</button></label>
 				<h2>Background</h2>
 				<label>Background type:</label><br/>
-					<label>Color<input type="radio" name="backgroundType"></label><br/>
-					<label>Image<input type="radio" name="backgroundType"></label>
+					<label>Color<input class="inSettings" type="radio" name="backgroundType"></label>
+					<input class="inSettings" id="backgroundColor" type="color"><br/>
+					<label>Image<input class="inSettings" type="radio" name="backgroundType" checked="checked"></label>
+					<input id="backgroundImage" class="inSettings" type="file">
+					<button class="inSettings">Apply</button>
 			</div>
 		</div>
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script type="text/javascript">
-			var defaultText = "i'm sorry";
+			var defaultText = "Bread";
 			const textarea = document.getElementById("input");
 			
 			
