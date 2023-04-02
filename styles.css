@@ -145,6 +145,17 @@ button.input:active {
 	padding-bottom: 2vmin;
 	font-weight: normal;
 	font-family: Minecraftia;
+	font-size: 16px;
+}
+.inSettings {
+	text-align: left;
+	box-sizing: border-box;
+	display:inline-block;
+	height:22px;
+}
+
+.inSettingsFrom {
+	vertical-align: center;
 }
 
 /* width */
@@ -168,9 +179,6 @@ border-radius: 50vmin;
 background: #555; 
 }
 
-.inSettings {
-	display:inline-block;
-}
 
 /* Minecraftia font, Source: https://codepen.io/Daltontastic/pen/YWVadG */
 @font-face {

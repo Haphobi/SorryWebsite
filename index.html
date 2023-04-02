@@ -28,14 +28,14 @@
 
 			<div class="settings">
 				<h1>Customisation</h1>
-				<label>String count (how many words): <input class="inSettings" type="number" inputmode="numeric" pattern="[0-9]" min="1" max="500"><button class="inSettings">Apply</button></label><br/>
-				<label>Theme Color: <input class="inSettings" type="color" value="#00ffff"><button class="inSettings">Apply</button></label><br/>
-				<label>Text Color:<input class="inSettings" type="color" value="#ffffff"><button class="inSettings">Apply</button></label>
+				<form class="inSettingsForm"><label>String count (how many words): </label><input class="inSettings" type="number" inputmode="numeric" pattern="[0-9]" min="1" max="500"><button class="inSettings">Apply</button></form><br/>
+				<label>Theme Color: </label><input class="inSettings" type="color" value="#00ffff"><button class="inSettings">Apply</button><br/>
+				<label>Text Color: </label><input class="inSettings" type="color" value="#ffffff"><button class="inSettings">Apply</button>
 				<h2>Background</h2>
-				<label>Background type:</label><br/>
-					<label>Color<input class="inSettings" type="radio" name="backgroundType"></label>
+				<label>Background type: </label><br/>
+					<label>Color</label><input class="inSettings" type="radio" name="backgroundType">
 					<input class="inSettings" id="backgroundColor" type="color"><br/>
-					<label>Image<input class="inSettings" type="radio" name="backgroundType" checked="checked"></label>
+					<label>Image</label><input class="inSettings" type="radio" name="backgroundType" checked="checked">
 					<input id="backgroundImage" class="inSettings" type="file">
 					<button class="inSettings">Apply</button>
 			</div>
